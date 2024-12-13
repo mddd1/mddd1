@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+int suma(int A,int B);
+
+
+
+int main()
+{
+    int m,n;
+    cout<<"ingrese valor de m"<<endl;
+    cin>>m;
+    cout<<"ingrese valor de n"<<endl;
+    cin>>n;
+    suma(m,n);
+
+
+
+}
+int suma(int A,int B){
+ int suma= A+B;
+ cout<<"valor suma es "<<suma<<endl;
+ return suma;
+}
+
