@@ -1,0 +1,60 @@
+#include <iostream>
+
+using namespace std;
+int suma(int ap1,int ap2,int nom1,int nom2,int naci,int fech,int lug1,int lug2,int sex,int Nu,int fechv,int nui);
+
+int main()
+{
+int nombre1,nombre2, apellido1,apellido2, nacionalidad,fecha_nacimiento,lugar_nacimiento1,lugar_nacimiento2,NUM,sexo,NUI,fecha_vencimiento;
+cout<< "apellidos"<<endl;
+cin>>apellido1;
+cin>>apellido2;
+cout<< "NOMBRES"<<endl;
+cin>>nombre1;
+cin>>nombre2;
+cout<< "Nacionalidad"<<endl;
+cin>>nacionalidad;
+cout<< "fecha de nacimiento"<<endl;
+cin>>fecha_nacimiento;
+cout<< "sexo"<<endl;
+cin>>sexo;
+cout<< "lugar nacimiento"<<endl;
+cin>>lugar_nacimiento1;
+cin>>lugar_nacimiento2;
+cout<< "No Documento"<<endl;
+cin>>NUM;
+cout<< "FECHA DE VENCIMIENTO"<<endl;
+cin>>fecha_vencimiento;
+cout<< "NUI"<<endl;
+cin>>NUI;
+    suma( nombre1,nombre2, apellido1,apellido2, nacionalidad,fecha_nacimiento,lugar_nacimiento1,lugar_nacimiento2,NUM,sexo,NUI,fecha_vencimiento);
+    return 0;
+}
+int suma(int ap1,int ap2,int nom1,int nom2,int naci,int fech,int lug1,int lug2,int sex,int Nu,int fechv,int nui){
+cout<< "    "<<endl;
+
+
+cout <<"CEDULA DE"<<" ** " <<"REPUBLICA DEL ECUADOR"<<endl;
+cout<<"IDENTIDAD" <<" ** " <<"DIRECCION GENERAL DE REGISTRO CIVIL,IDENTIFICACION Y CEDULACION"<<endl;
+
+cout << "APELLIDOS"<< "        "<< "CONDICON CIUDADANIA*NNA"<<endl;
+cout<< ap1<<endl;
+cout<< ap2<<endl;
+cout<< "NOMBRES"<<endl;
+cout<<nom1<<endl;
+cout<<nom2<<endl;
+cout<< "NACIONALIDAD"<<endl;
+cout<< naci<<endl;
+cout<< "FECHA DE NACIMIENTO"<< "                        "<<"SEXO"<<endl;
+cout<< fech<<"                                          "<<sex<<endl;
+
+cout<< "LUGAR DE NACIMIENTO"<< "                        "<<"No.DOCUMENTACION"<<endl;
+cout<<lug1<<"                                           "<<Nu<<endl;
+cout<<lug2<<"                                           "<<"FECHA DE VENCIMIENTO"<<endl;
+cout<< "                  FIRMA DEL TITULAR"<< "        "<<fechv<<endl;
+cout<< "NUI."<<nui<<"    *******       "<<endl;
+
+
+return 0;
+
+}
