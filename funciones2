@@ -1,11 +1,12 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
-int suma(int ap1,int ap2,int nom1,int nom2,int naci,int fech,int lug1,int lug2,int sex,int Nu,int fechv,int nui);
-
+void imprimircedula(string ap1,string ap2,string nom1,string nom2,string naci,string fech,string lug1,string lug2,string sex,string num,string fechv,string nui);
 int main()
 {
-int nombre1,nombre2, apellido1,apellido2, nacionalidad,fecha_nacimiento,lugar_nacimiento1,lugar_nacimiento2,NUM,sexo,NUI,fecha_vencimiento;
+string apellido1,apellido2,nombre1,nombre2,nacionalidad,fecha_nacimiento,lugar_nacimiento1,lugar_nacimiento2;
+string NUM,sexo,nui,fecha_vencimiento;
+
 cout<< "apellidos"<<endl;
 cin>>apellido1;
 cin>>apellido2;
@@ -26,11 +27,12 @@ cin>>NUM;
 cout<< "FECHA DE VENCIMIENTO"<<endl;
 cin>>fecha_vencimiento;
 cout<< "NUI"<<endl;
-cin>>NUI;
-    suma( nombre1,nombre2, apellido1,apellido2, nacionalidad,fecha_nacimiento,lugar_nacimiento1,lugar_nacimiento2,NUM,sexo,NUI,fecha_vencimiento);
+cin>>nui;
+imprimircedula(apellido1,apellido2,nombre1,nombre2,nacionalidad,fecha_nacimiento,lugar_nacimiento1,lugar_nacimiento2,NUM,sexo,nui,fecha_vencimiento);
+
     return 0;
 }
-int suma(int ap1,int ap2,int nom1,int nom2,int naci,int fech,int lug1,int lug2,int sex,int Nu,int fechv,int nui){
+void imprimircedula(string ap1,string ap2,string nom1,string nom2,string naci,string fech,string lug1,string lug2,string sex,string Nu,string fechv,string nui){
 cout<< "    "<<endl;
 
 
@@ -55,6 +57,6 @@ cout<< "                  FIRMA DEL TITULAR"<< "        "<<fechv<<endl;
 cout<< "NUI."<<nui<<"    *******       "<<endl;
 
 
-return 0;
+
 
 }
