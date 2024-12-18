@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+ int resta(int D,int Dia,int M,int Meses,int A,int Anos);
+
+int main()
+{
+    int d,dia,m,meses,a,anos;
+    cout<<"ingrese el promedio de dias que tiene los meses :"<<endl;
+    cin>>d;
+    cout<<"ingrese el dia que nacio(en numeros): "<<endl;
+    cin>>dia;
+    cout<<"ingrese los meses que tiene el ano"<<endl;
+    cin>>m;
+    cout<<"ingrese en que mes nacio(en numeros)"<<endl;
+    cin>>meses;
+    cout<<"ingrese en que ano estamos"<<endl;
+    cin>>a;
+    cout<<"ingrese en que ano nacio"<<endl;
+    cin>>anos;
+
+    resta(d,dia,m,meses,a,anos);
+
+}
+    int resta(int D,int Dia,int M,int Meses,int A,int Anos){
+    int restar=D-Dia;
+    int restar1=M-Meses;
+    int resta2=A-Anos;
+    cout<<"tienes   "<<restar<<"   dias, "<<restar1<<"  meses"<<" y "<<resta2<<" anos"<<endl;
+
+    return restar;
+}
