@@ -1,0 +1,47 @@
+#include <iostream>
+#include<string>
+using namespace std;
+void ingresar(string &nombre,string &apellido,float &nota1,float &nota2,float &nota3);
+float calcular(float nota1,float nota2,float nota3,float &notafinal);
+void mostrar(string nombre,string apellido, float &notafinal);
+
+int main()
+{
+    string nombre,apellido;
+    float nota1,nota2,nota3,notafinal;
+    ingresar(nombre,apellido,nota1,nota2,nota3);
+    calcular(nota1,nota2,nota3,notafinal);
+    mostrar(nombre,apellido,notafinal);
+
+}
+void ingresar(string &nombre,string &apellido,float &nota1,float &nota2,float &nota3){
+cout<<"ingrese nombre"<<endl;
+getline(cin,nombre);
+cout<<"ingrese apellido"<<endl;
+getline(cin,apellido);
+cout<<"nota1"<<endl;
+cin>>nota1;
+cout<<"nota2"<<endl;
+cin>>nota2;
+cout<<"nota3"<<endl;
+cin>>nota3;
+
+
+}
+float calcular(float nota1,float nota2,float nota3,float &notafinal){
+float notafinal=(nota1+nota2+nota3)/3;
+if (notafinal<14){
+    cout<<"reprobado"<<endl;
+}
+else cout<<"aprobado"<<endl;
+return notafinal;
+
+}
+void mostrar(string nombre,string apellido, float notafinal){
+cout<<nombre<<endl;
+cout<<apellido<<endl;
+cout<<notafinal<<endl;
+
+
+
+}
