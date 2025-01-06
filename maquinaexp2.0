@@ -1,0 +1,204 @@
+#include <iostream>
+#include <string>//biblioteca tipo string
+
+using namespace std;
+
+//DECLARO LAS FUNCIONES
+void mostraralexander(string producto1, double precio1, int cantidad1,string producto2, double precio2, int cantidad2,string producto3, double precio3, int cantidad3);
+void compraralexander(string& producto1, double& precio1, int& cantidad1,string& producto2, double& precio2, int& cantidad2,string& producto3, double& precio3, int& cantidad3,double& saldo);
+void Ingresar(string producto1, string producto2, string producto3,int& cantidad1, int& cantidad2, int& cantidad3);
+void Saldo(double& saldo);
+
+int main() {
+    // Productos base
+    string producto1 = "SPORADE", producto2 = "GALAK", producto3 = "RUFLESS";
+    double precio1 = 0.60, precio2 = 0.50, precio3 = 0.40;
+    int cantidad1 = 6, cantidad2 = 8, cantidad3 = 10;
+
+    // el usuario tiene ingresa con 20.0
+    double saldo       = 20.0;
+
+    int opcion;
+
+    do { //REPETIMOS EL PROGRAMA
+        cout << "--------------------EXPENDEDORA DE ALIMENTOS-------------------- " << endl;
+        cout << "SALDO DISPONIBLE: $" << saldo << endl;
+        cout << "---------------------------------------------------------------- " << endl;
+        cout << "1. COMPRAR PRODUCTO" << endl;
+        cout << "---------------------------------------------------------------- " << endl;
+        cout << "2. MOSTRAR PRODUCTO" << endl;
+        cout << "---------------------------------------------------------------- " << endl;
+        cout << "3. AJUSTAR CANTIDADES" << endl;
+        cout << "---------------------------------------------------------------- " << endl;
+        cout << "4. INGRESAR SALDO" << endl;
+        cout << "---------------------------------------------------------------- " << endl;
+        cout << "5. SALIR" << endl;
+        cout << "---------------------------------------------------------------- " << endl;
+        cout << "SELECCIONE UNA OPCION: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "---------------------------------------------------------------- " << endl;
+                compraralexander(producto1, precio1, cantidad1,
+                                producto2, precio2, cantidad2,
+                                producto3, precio3, cantidad3, saldo);
+                break;
+            case 2:
+                mostraralexander(producto1, precio1, cantidad1,
+                                producto2, precio2, cantidad2,
+                                producto3, precio3, cantidad3);
+                break;
+            case 3:
+                Ingresar(producto1, producto2, producto3,
+                                 cantidad1, cantidad2, cantidad3);
+                break;
+            case 4:
+                Saldo(saldo);
+                break;
+            case 5:
+                cout << "GRACIAS POR USAR LA MAQUINA" << endl;
+                break;
+            default:
+                cout << "OPCION NO VALIDA INTENTA DE NUEVO." << endl;
+        }
+    } while (opcion != 5);
+
+    return 0;
+}
+
+// MOSTRAMOS LOS PRODUCTOS QUE TENEMOS DISPONIBLES
+void mostraralexander(string producto1, double precio1, int cantidad1,
+                     string producto2, double precio2, int cantidad2,
+                     string producto3, double precio3, int cantidad3) {
+    cout << "------------------ Productos Disponibles --------------------------" << endl;
+    cout << "1. " << producto1 << " - $" << precio1 << " - Cantidad disponible: " << cantidad1 << endl;
+    cout << "2. " << producto2 << " - $" << precio2 << " - Cantidad disponible: " << cantidad2 << endl;
+    cout << "3. " << producto3 << " - $" << precio3 << " - Cantidad disponible: " << cantidad3 << endl;
+    cout << "---------------------------------------------------------------- --" << endl;
+}
+
+// COMPRA DE PRODUCTOS
+void compraralexander(string& producto1, double& precio1, int& cantidad1,
+                     string& producto2, double& precio2, int& cantidad2,
+                     string& producto3, double& precio3, int& cantidad3,
+                     double& saldo) {
+    int opcion, cantidadDeseada;
+
+    mostraralexander(producto1, precio1, cantidad1,
+                    producto2, precio2, cantidad2,
+                    producto3, precio3, cantidad3);
+
+    cout << "SALDO QUE DISPONES: $" << saldo << endl;
+    cout << "SELECCIONA UN PRODUCTO DEL 1 AL 3 (1-3): ";
+    cin >> opcion;
+
+    if (opcion < 1 || opcion > 3) {
+        cout << "OPCION INCORRECTA INTENTA NUEVAMENTE." << endl;
+        return;
+    }
+
+    string productoSeleccionado;
+    double precioSeleccionado;
+    int* cantidadDisponible;
+
+    if (opcion == 1) {
+        productoSeleccionado = producto1;
+        precioSeleccionado = precio1;
+        cantidadDisponible = &cantidad1;
+    } else if (opcion == 2) {
+        productoSeleccionado = producto2;
+        precioSeleccionado = precio2;
+        cantidadDisponible = &cantidad2;
+    } else {
+        productoSeleccionado = producto3;
+        precioSeleccionado = precio3;
+        cantidadDisponible = &cantidad3;
+    }
+
+    if (*cantidadDisponible == 0) {
+        cout << "PRODUCTO AGOTADO." << endl;
+        return;
+    }
+
+    cout << "INGRESA LA CANTIDAD QUE DESEAS COMPRAR: ";
+    cin >> cantidadDeseada;
+
+    if (cantidadDeseada <= 0 || cantidadDeseada > *cantidadDisponible) {
+        cout << "CANTIDAD INCORRECTA INTENTA NUEVAMENTE." << endl;
+        return;
+    }
+
+    double total = precioSeleccionado * cantidadDeseada;
+
+    if (total > saldo) {
+        cout << "SALDO INSUFICIENTE." << endl;
+        return;
+    }
+
+    saldo -= total;  // Descontar el saldo
+    *cantidadDisponible -= cantidadDeseada;
+
+    cout << "EL TOTAL A PAGAR POR " << cantidadDeseada << " " << productoSeleccionado
+         << " ES: $" << total << endl;
+    cout << "SALDO SOBRANTE: $" << saldo << endl;
+    cout << "GRACIAS POR COMPRAR." << endl;
+}
+
+// Ajustar cantidades de productos
+void Ingresar(string producto1, string producto2, string producto3,
+                      int& cantidad1, int& cantidad2, int& cantidad3) {
+    int opcion, cantidadAjuste;
+
+    cout << "--------------------- AJUSTAR LAS CANTIDADES ---------------------" << endl;
+    cout << "1. " << producto1 << " CANTIDAD ACTUAL: " << cantidad1 << endl;
+    cout << "2. " << producto2 << " CANTIDAD ACTUAL: " << cantidad2 << endl;
+    cout << "3. " << producto3 << " CANTIDAD ACTUAL: " << cantidad3 << endl;
+    cout << "SELECCIONA EL PRODUCTO QUE DESEAS AJUSTAR DEL 1 AL 3 (1-3): ";
+    cin >> opcion;
+
+    if (opcion < 1 || opcion > 3) {
+        cout << "CANTIDAD INCORRECTA INTENTA NUEVAMENTE." << endl;
+        return;
+    }
+
+    cout << "INGRESAR LA CANTIDAD QUE DESEA AGREGAR o QUITAR (EN NEGATIVO): ";
+    cin >> cantidadAjuste;
+
+    if (opcion == 1) {
+        if (cantidad1 + cantidadAjuste < 0) {
+            cout << "NO SE PUEDE REDUCIR A 0 EN EL PRODUCTO: " << producto1 << "." << endl;
+        } else {
+            cantidad1 += cantidadAjuste;
+            cout << "CANTIDAD AJUSTDA, AHORA HAY: " << cantidad1 << " " << producto1 << "." << endl;
+        }
+    } else if (opcion == 2) {
+        if (cantidad2 + cantidadAjuste < 0) {
+            cout << "NO SE PUEDE REDUCIR A 0 EN EL PRODUCTO: " << producto2 << "." << endl;
+        } else {
+            cantidad2 += cantidadAjuste;
+            cout << "CANTIDAD AJUSTDA, AHORA HAY: " << cantidad2 << " " << producto2 << "." << endl;
+        }
+    } else if (opcion == 3) {
+        if (cantidad3 + cantidadAjuste < 0) {
+            cout << "NO SE PUEDE REDUCIR A 0 EN EL PRODUCTO: " << producto3 << "." << endl;
+        } else {
+            cantidad3 += cantidadAjuste;
+            cout << "CANTIDAD AJUSTDA, AHORA HAY: " << cantidad3 << " " << producto3 << "." << endl;
+        }
+    }
+}
+
+// INGRESAS EL SALDO PERSONALIZADO
+void Saldo(double& saldo) {
+    double nuevoSaldo;
+    cout << "INGRESA EL SALDO CON EL QUE QUIERES EMPEZAR: $";
+    cin >> nuevoSaldo;
+
+    if (nuevoSaldo < 0) {
+        cout << "EL SALDO NO PUEDE SER NEGATIVO." << endl;
+    } else {
+        saldo = nuevoSaldo;
+        cout << "EL NUEVO SALDO ES: $" << saldo << endl;
+    }
+}
