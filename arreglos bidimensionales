@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string nc[4][6];
+    for(int i=0;i<4;i++){
+        for(int j=0;j<6;j++){
+        cout<<"ingrese su nombre"<<"["<<i<<"]"<<"["<<j<<"]"<<endl;
+        cin>>nc[i][j];
+
+        }
+    }
+for(int i=0;i<4;i++){
+        for(int j=0;j<6;j++){
+        cout<<nc[i][j]<<"      ";
+        }
+        cout<<endl;
+    }
+
+
+    return 0;
+}
