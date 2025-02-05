@@ -56,5 +56,14 @@ int main()
     if else(frase3!=n2){
           cout<<"no se encontro "<<endl;
     }
-    return 0;
+    string busqueda;
+cout<<"ingrese al buscar"<<endl;
+cin>>busqueda;
+if(docs.find(busqueda)!=string::npos){
+cout<<"se encontro a: "<<busqueda<<endl;
+}
+else{
+cout<<"no se encontro :("<<busqueda<<endl;
+}
+return 0;
 }
